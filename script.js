@@ -3,7 +3,10 @@ const btn_parar = document.querySelector(".button-stop")
 const btn_reiniciar = document.querySelector(".button-reload")
 const textoTempo = document.querySelector('p')
 let cron
-let tempo = 0
+
+let segundos = 0
+let minutos = 0
+let horas = 0
 
 
 function iniciar(){
@@ -19,14 +22,23 @@ function parar(){
 function reiniciar(){
     parar()
     clearInterval(cron)
-    tempo = 0
+    
     textoTempo.innerText = '00:00'
     
 }
 
 function contar(){
-    let tempoFormatado
-    tempo++
+   
+    segundos++
+    if(segundos > 59){
+        minutos++
+        segundos = 0
+    }
+    if(minutos > 59){
+        horas++
+        minutos = 0
+    }
+    
     mostrarTempo()
 
 }
@@ -49,17 +61,14 @@ function intercalarBotoes(opcao){
 
 function mostrarTempo()
 {
-    const tempoFormatado = new Date(tempo);
-    const minutos = tempoFormatado.getMinutes()
-    const segundos = tempoFormatado.getSeconds()
-    const milisegundos = tempoFormatado.getMilliseconds()
+    
     
     
     const minutosFormatados = minutos < 10 ? '0' + minutos : minutos;
     const segundosFormatados = segundos < 10 ? '0' + segundos : segundos
-    const milisegundosFormatados = milisegundos <10 ? '0' + milisegundos : milisegundos
+    const horasFormatadas = horas <10 ? '0' + horas : horas
 
-    const tempoString = minutos > 0 ?`${minutosFormatados}:${segundosFormatados}:${milisegundosFormatados}` :` ${segundosFormatados}:${milisegundosFormatados}`
+    const tempoString = horas > 0 ?`${horasFormatadas}:${minutosFormatados}.${segundosFormatados}` :`${minutosFormatados}:${segundosFormatados}`
     textoTempo.innerText = tempoString
 }
 
