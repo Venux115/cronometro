@@ -22,7 +22,9 @@ function parar(){
 function reiniciar(){
     parar()
     clearInterval(cron)
-    
+    segundos = 0
+    minutos = 0
+    horas = 0
     textoTempo.innerText = '00:00'
     
 }
