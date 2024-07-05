@@ -26,7 +26,7 @@ body
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font);
+    font-family: var(--font), sans-serif;
     background-color: var(--background);
 }
 
@@ -76,9 +76,7 @@ p
     padding: 1.5rem;
     width: 12rem;
     cursor: pointer;
-    border: none;
     border-radius: 15px;
-    
     border: 2px solid transparent;
 }
 
@@ -100,12 +98,12 @@ p
     border-color: var(--color-3);
 }
 
-.button-save,.button-start
+.button-start
 {
     background-color: var(--color-2);
 }
 
-.button-save:hover, .button-start:hover
+.button-start:hover
 {
     color: var(--color-2);
     border-color: var(--color-2);
